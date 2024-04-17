@@ -21,7 +21,7 @@ vps_info = {
         'ip': 'IP_VPS_4',
         'username': 'root',
         'password': '@99Sandi'
-    }
+    },
     's4': {
         'ip': 'IP_VPS_5',
         'username': 'root',
