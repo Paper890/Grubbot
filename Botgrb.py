@@ -31,7 +31,8 @@ vps_list = [
         'SSH_PORT': 22,
         'SSH_USERNAME': 'root',
         'SSH_PASSWORD': '@99Sandi'
-    },    {
+    },
+    {
         'name': 's4',
         'SSH_HOST': '128.199.164.52',
         'SSH_PORT': 22,
