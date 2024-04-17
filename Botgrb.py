@@ -7,7 +7,7 @@ def start(update, context):
     update.message.reply_text('Halo! Kirim /reboot untuk me-reboot VPS.')
 
 # Fungsi untuk menangani perintah /reboot
-def reboot_sg1(update, context):
+def reboot_{SERVER}(update, context):
     # Menjalankan perintah reboot VPS
     subprocess.Popen(['sudo', 'reboot'])
     update.message.reply_text('VPS sedang di-reboot...')
@@ -20,7 +20,7 @@ def main():
     updater.dispatcher.add_handler(CommandHandler('start', start))
 
     # Menambahkan handler perintah /reboot
-    updater.dispatcher.add_handler(CommandHandler('reboot_sg1', reboot_sg1))
+    updater.dispatcher.add_handler(CommandHandler('reboot_{SERVER}', reboot_{SERVER}))
 
     # Memulai bot
     updater.start_polling()
