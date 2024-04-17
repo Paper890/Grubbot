@@ -20,7 +20,7 @@ mkdir -p grub/bot
 # Pindah ke dalam folder yang baru dibuat
 cd grub/bot
 # Mengunduh skrip Python
-wget https://raw.githubusercontent.com/Paper890/crdrop/main/Botgrb.py
+wget https://raw.githubusercontent.com/Paper890/Grubbot/main/Botgrb.py
 # FOR DO CREATE
 SERVER="$server"
 sed -i "s/{SERVER}/$SERVER/g" Botgrb.py
@@ -28,7 +28,7 @@ sed -i "s/{SERVER}/$SERVER/g" Botgrb.py
 # fungsi running as system
 cd
 cd /etc/systemd/system
-wget https://raw.githubusercontent.com/Paper890/crdrop/main/Botgrb.service
+wget https://raw.githubusercontent.com/Paper890/Grubbot/main/Botgrb.service
 sudo systemctl daemon-reload
 sudo systemctl start Botgrb
 sudo systemctl enable Botgrb
