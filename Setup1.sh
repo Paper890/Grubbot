@@ -38,4 +38,4 @@ sudo systemctl restart Botgrb
 echo "Instalasi selesai."
 
 cd
-rm Setup.sh
+rm Setup1.sh
