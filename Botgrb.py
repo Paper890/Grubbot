@@ -6,7 +6,7 @@ from telegram.ext import CommandHandler, Updater
 def reboot_{SERVER}(update, context):
     # Menjalankan perintah reboot VPS
     subprocess.Popen(['sudo', 'reboot'])
-    update.message.reply_text('VPS sedang di-reboot...')
+    update.message.reply_text('VPS {SERVER} sedang di-reboot...')
 
 def main():
     # Inisialisasi bot dengan token
