@@ -66,7 +66,7 @@ def reboot_vps(update, context):
 
 def main():
     # Token bot Telegram
-    updater = Updater(token='{TOKEN}', use_context=True)
+    updater = Updater(token='6474341901:AAFlu-jiIXzz_4nESufZ7E1ZkkSkJTYkoNg', use_context=True)
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
