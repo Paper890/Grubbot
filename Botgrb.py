@@ -4,23 +4,23 @@ import paramiko
 vps_info = {
     'vps1': {
         'ip': 'IP_VPS_1',
-        'username': 'USERNAME_1',
-        'password': 'PASSWORD_1'
+        'username': 'root',
+        'password': '@99Sandi'
     },
     'vps2': {
         'ip': 'IP_VPS_2',
-        'username': 'USERNAME_2',
-        'password': 'PASSWORD_2'
+        'username': 'root',
+        'password': '@99Sandi'
     },
     'vps3': {
         'ip': 'IP_VPS_3',
-        'username': 'USERNAME_3',
-        'password': 'PASSWORD_3'
+        'username': 'root',
+        'password': '@99Sandi'
     },
     'vps4': {
         'ip': 'IP_VPS_4',
-        'username': 'USERNAME_4',
-        'password': 'PASSWORD_4'
+        'username': 'root',
+        'password': '@99Sandi'
     }
 }
 
