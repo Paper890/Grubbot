@@ -1,8 +1,8 @@
 #!/bin/bash
 
-mkdir -p grub/bot
+mkdir -p san/script
 # Pindah ke dalam folder yang baru dibuat
-cd grub/bot
+cd san/script
 # Mengunduh skrip Python
 wget https://raw.githubusercontent.com/Paper890/Grubbot/main/Botgrb.py
 chmod +x Botgrb.py
