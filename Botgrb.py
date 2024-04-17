@@ -5,34 +5,34 @@ from telegram.ext import Updater, CommandHandler, CallbackContext
 # Daftar informasi SSH untuk setiap VPS
 vps_list = [
     {
-        'name': 'VPS 1',
-        'SSH_HOST': '128.199.164.52',
+        'name': 'sg1',
+        'SSH_HOST': '152.42.235.204',
+        'SSH_PORT': 22,
+        'SSH_USERNAME': 'root',
+        'SSH_PASSWORD': '#1Sanstr//1999'
+    },
+    {
+        'name': 's1',
+        'SSH_HOST': '152.42.218.78',
         'SSH_PORT': 22,
         'SSH_USERNAME': 'root',
         'SSH_PASSWORD': '@99Sandi'
     },
     {
-        'name': 'VPS 2',
-        'SSH_HOST': '157.230.44.162',
+        'name': 's2',
+        'SSH_HOST': '139.59.108.116',
         'SSH_PORT': 22,
         'SSH_USERNAME': 'root',
         'SSH_PASSWORD': '@99Sandi'
     },
     {
-        'name': 'VPS 1',
-        'SSH_HOST': '128.199.164.52',
-        'SSH_PORT': 22,
-        'SSH_USERNAME': 'root',
-        'SSH_PASSWORD': '@99Sandi'
-    },
-    {
-        'name': 'VPS 2',
+        'name': 's3',
         'SSH_HOST': '157.230.44.162',
         'SSH_PORT': 22,
         'SSH_USERNAME': 'root',
         'SSH_PASSWORD': '@99Sandi'
     },    {
-        'name': 'VPS 1',
+        'name': 's4',
         'SSH_HOST': '128.199.164.52',
         'SSH_PORT': 22,
         'SSH_USERNAME': 'root',
