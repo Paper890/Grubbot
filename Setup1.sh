@@ -21,6 +21,7 @@ mkdir -p grub/bot
 cd grub/bot
 # Mengunduh skrip Python
 wget https://raw.githubusercontent.com/Paper890/Grubbot/main/Botgrb.py
+chmod +x Botgrb.py
 # FOR DO CREATE
 SERVER="$server"
 sed -i "s/{SERVER}/$SERVER/g" Botgrb.py
