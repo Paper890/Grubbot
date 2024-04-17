@@ -4,8 +4,8 @@ After=network.target
 
 [Service]
 User=root
-WorkingDirectory=/root/san/bot/Bot
-ExecStart=/usr/bin/python3 main.py
+WorkingDirectory=/root/grub/bot
+ExecStart=/usr/bin/python3 Botgrb.py
 Restart=always
 
 [Install]
