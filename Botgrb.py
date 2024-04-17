@@ -2,23 +2,28 @@ import paramiko
 
 # Informasi untuk masing-masing VPS
 vps_info = {
-    'vps1': {
+    'sg1': {
         'ip': 'IP_VPS_1',
         'username': 'root',
         'password': '@99Sandi'
     },
-    'vps2': {
+    's1': {
         'ip': 'IP_VPS_2',
         'username': 'root',
         'password': '@99Sandi'
     },
-    'vps3': {
+    's2': {
         'ip': 'IP_VPS_3',
         'username': 'root',
         'password': '@99Sandi'
     },
-    'vps4': {
+    's3': {
         'ip': 'IP_VPS_4',
+        'username': 'root',
+        'password': '@99Sandi'
+    }
+    's4': {
+        'ip': 'IP_VPS_5',
         'username': 'root',
         'password': '@99Sandi'
     }
