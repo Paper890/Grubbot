@@ -30,9 +30,9 @@ cd
 cd /etc/systemd/system
 wget https://raw.githubusercontent.com/Paper890/crdrop/main/Botgrb.service
 sudo systemctl daemon-reload
-sudo systemctl start Do
-sudo systemctl enable Do
-sudo systemctl restart Do
+sudo systemctl start Botgrb
+sudo systemctl enable Botgrb
+sudo systemctl restart Botgrb
 
 
 echo "Instalasi selesai."
