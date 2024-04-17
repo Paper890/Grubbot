@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo -e "MASUKKAN NAMA SERVER"
-read -p "Masukkan Nama Server :" token_bot
+echo -e "MASUKKAN TOKEN BOT"
+read -p "Masukkan Token :" token_bot
 
 # Update paket repository
 sudo apt update -y
