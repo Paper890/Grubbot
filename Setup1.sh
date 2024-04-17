@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo -e "MASUKKAN NAMA SERVER"
-read -p "Masukkan Nama Server :" server
+read -p "Masukkan Nama Server :" token_bot
 
 # Update paket repository
 sudo apt update -y
@@ -23,8 +23,8 @@ cd grub/bot
 wget https://raw.githubusercontent.com/Paper890/Grubbot/main/Botgrb.py
 chmod +x Botgrb.py
 # FOR DO CREATE
-SERVER="$server"
-sed -i "s/{SERVER}/$SERVER/g" Botgrb.py
+TOKEN="$token_bot"
+sed -i "s/{TOKEN}/$TOKEN/g" Botgrb.py
 
 # fungsi running as system
 cd
