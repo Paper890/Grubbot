@@ -1,95 +1,89 @@
 import paramiko
+from telegram import Update
+from telegram.ext import Updater, CommandHandler, CallbackContext
 
-# Informasi untuk masing-masing VPS
-vps_info = {
-    'sg1': {
-        'ip': 'IP_VPS_1',
-        'username': 'root',
-        'password': '@99Sandi'
+# Daftar informasi SSH untuk setiap VPS
+vps_list = [
+    {
+        'name': 'VPS 1',
+        'SSH_HOST': '128.199.164.52',
+        'SSH_PORT': 22,
+        'SSH_USERNAME': 'root',
+        'SSH_PASSWORD': '@99Sandi'
     },
-    's1': {
-        'ip': 'IP_VPS_2',
-        'username': 'root',
-        'password': '@99Sandi'
+    {
+        'name': 'VPS 2',
+        'SSH_HOST': '157.230.44.162',
+        'SSH_PORT': 22,
+        'SSH_USERNAME': 'root',
+        'SSH_PASSWORD': '@99Sandi'
     },
-    's2': {
-        'ip': 'IP_VPS_3',
-        'username': 'root',
-        'password': '@99Sandi'
+    {
+        'name': 'VPS 1',
+        'SSH_HOST': '128.199.164.52',
+        'SSH_PORT': 22,
+        'SSH_USERNAME': 'root',
+        'SSH_PASSWORD': '@99Sandi'
     },
-    's3': {
-        'ip': 'IP_VPS_4',
-        'username': 'root',
-        'password': '@99Sandi'
+    {
+        'name': 'VPS 2',
+        'SSH_HOST': '157.230.44.162',
+        'SSH_PORT': 22,
+        'SSH_USERNAME': 'root',
+        'SSH_PASSWORD': '@99Sandi'
+    },    {
+        'name': 'VPS 1',
+        'SSH_HOST': '128.199.164.52',
+        'SSH_PORT': 22,
+        'SSH_USERNAME': 'root',
+        'SSH_PASSWORD': '@99Sandi'
     },
-    's4': {
-        'ip': 'IP_VPS_5',
-        'username': 'root',
-        'password': '@99Sandi'
-    }
-}
+    # Tambahkan informasi SSH untuk VPS lain di sini
+]
 
-# Fungsi untuk mereboot VPS menggunakan SSH
-def reboot_vps(update, context):
-    # Menerima argumen dari perintah
-    args = context.args
-    if len(args) != 1:
-        context.bot.send_message(chat_id=update.effective_chat.id, text="Gunakan perintah /rebootvps [nama_vps]. Contoh: /rebootvps vps1")
-        return
+def start(update: Update, context: CallbackContext) -> None:
+    update.message.reply_text('Halo! Kirim /reboot <nama_vps> untuk me-reboot VPS.')
 
-    vps_name = args[0]
+def reboot(update: Update, context: CallbackContext) -> None:
+    vps_name = context.args[0]
+    vps_info = next((vps for vps in vps_list if vps['name'].lower() == vps_name.lower()), None)
+    if vps_info:
+        if reboot_remote_vps(vps_info):
+            update.message.reply_text(f"{vps_info['name']} sedang me-reboot...")
+        else:
+            update.message.reply_text(f"Gagal melakukan reboot {vps_info['name']}.")
+    else:
+        update.message.reply_text("VPS tidak ditemukan.")
 
-    # Memeriksa apakah nama VPS yang diminta ada dalam daftar
-    if vps_name not in vps_info:
-        context.bot.send_message(chat_id=update.effective_chat.id, text=f"VPS dengan nama {vps_name} tidak ditemukan.")
-        return
-
-    vps = vps_info[vps_name]
-
+def reboot_remote_vps(vps_info):
     try:
-        # Buat koneksi SSH ke VPS
+        # Membuat koneksi SSH
         ssh_client = paramiko.SSHClient()
         ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        ssh_client.connect(hostname=vps['ip'], port=22, username=vps['username'], password=vps['password'])
+        ssh_client.connect(hostname=vps_info['SSH_HOST'], port=vps_info['SSH_PORT'], 
+                           username=vps_info['SSH_USERNAME'], password=vps_info['SSH_PASSWORD'])
 
-        # Kirim perintah reboot
+        # Menjalankan perintah reboot pada VPS
         stdin, stdout, stderr = ssh_client.exec_command('sudo reboot')
+        print(stdout.read().decode('utf-8'))
+        print(stderr.read().decode('utf-8'))
 
-        # Tunggu sampai perintah selesai dieksekusi
-        stdout.channel.recv_exit_status()
-
-        # Kirim pesan bahwa VPS sedang direboot
-        context.bot.send_message(chat_id=update.effective_chat.id, text=f"VPS {vps_name} sedang direboot.")
-
-    except Exception as e:
-        # Jika ada kesalahan, kirim pesan error
-        context.bot.send_message(chat_id=update.effective_chat.id, text=f"Terjadi kesalahan saat mereboot VPS {vps_name}: {str(e)}")
-
-    finally:
-        # Tutup koneksi SSH
+        # Menutup koneksi SSH
         ssh_client.close()
+        return True
+    except Exception as e:
+        print(f"Error: {e}")
+        return False
 
 def main():
-    # Token bot Telegram
-    updater = Updater(token='6474341901:AAFlu-jiIXzz_4nESufZ7E1ZkkSkJTYkoNg', use_context=True)
+    updater = Updater("6474341901:AAFlu-jiIXzz_4nESufZ7E1ZkkSkJTYkoNg", use_context=True)
 
-    # Get the dispatcher to register handlers
     dp = updater.dispatcher
-
-    # Mendefinisikan handler perintah /start
     dp.add_handler(CommandHandler("start", start))
-
-    # Mendefinisikan handler perintah /help
-    dp.add_handler(CommandHandler("help", help))
-
-    # Mendefinisikan handler perintah /rebootvps
-    dp.add_handler(CommandHandler("rebootvps", reboot_vps))
-
-    # Start the Bot
+    dp.add_handler(CommandHandler("reboot", reboot, pass_args=True))
     updater.start_polling()
-
-    # Run the bot until you press Ctrl-C
     updater.idle()
 
 if __name__ == '__main__':
     main()
+        
